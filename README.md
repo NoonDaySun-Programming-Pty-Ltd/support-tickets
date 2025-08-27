@@ -24,6 +24,7 @@ erDiagram
         bigInt id PK
         text email
         text password_hash
+        enum role "One of manager, staff, client"
         datetime created_at
         datetime updated_at
     }
