@@ -1,0 +1,48 @@
+services:
+  support-tickets:
+    build: .
+    container_name: support_tickets_app
+    depends_on:
+      - mysql
+    labels:
+      org.label-schema.group: "application"
+    networks:
+      - support-tickets
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+      - "${HTTPS_PORT:-443}:443/udp"
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+      - caddy_config:/config
+      - caddy_data:/data
+
+  mysql:
+    container_name: support_tickets_db
+    env_file:
+      - .env
+    environment:
+      - "MYSQL_DATABASE=${DB_DATABASE}"
+      - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
+      - "MYSQL_USER=${DB_USERNAME}"
+      - "MYSQL_PASSWORD=${DB_PASSWORD}"
+    image: mysql:lts
+    labels:
+      org.label-schema.group: "database"
+    networks:
+      - support-tickets
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    restart: unless-stopped
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+networks:
+  support-tickets:
+    external: true
+
+volumes:
+  caddy_config:
+  caddy_data:
+  mysqldata:
