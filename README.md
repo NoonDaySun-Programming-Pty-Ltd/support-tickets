@@ -2,6 +2,22 @@
 
 A basic support ticket system using Laravel.
 
+## Local Development
+
+```shell
+docker network create support-tickets; \
+docker compose down; \
+docker compose build; \
+docker compose up -d
+```
+
+Then we should connect to the app container and run the migrations:
+
+```shell
+docker compose exec -it support-tickets sh
+php artisan migrate:fresh
+```
+
 ## Requirements
 
 1. A login page with database driven authentication.
@@ -25,7 +41,7 @@ erDiagram
         text email
         text password_hash
         enum role "One of manager, staff, client"
-        consent_for_email boolean
+        boolean consent_for_email
         datetime email_consent_at
         datetime created_at
         datetime updated_at
