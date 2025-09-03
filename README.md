@@ -5,6 +5,14 @@ A basic support ticket system using Laravel.
 ## Local Development
 
 ```shell
+cp .env.example .env; \
+```
+
+Edit `.env` to include a DB_PASSWORD of your choice.
+
+Then run the following commands to start the application:
+
+```shell
 docker network create support-tickets; \
 docker compose down; \
 docker compose build; \
@@ -15,6 +23,8 @@ Then we should connect to the app container and run the migrations:
 
 ```shell
 docker compose exec -it support-tickets sh
+composer install -o
+php artisan key:generate;
 php artisan migrate:fresh
 ```
 
