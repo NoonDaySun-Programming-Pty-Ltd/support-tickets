@@ -25,7 +25,7 @@ jobs:
         run: composer install -o
 
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse --fix  --memory-limit=1G
+        run: ./vendor/bin/phpstan analyse  --memory-limit=1G
 
       - name: Run Rector
         run: ./vendor/bin/rector
