@@ -26,9 +26,12 @@ RUN docker-php-ext-install \
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
 COPY . .
 COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=node:22.19.0-alpine3.22 /usr/local/bin/node /usr/local/bin/node
+COPY resources/js/ ./resources/js/
+COPY resources/css/ ./resources/css/
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 # Start FrankenPHP
 CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]

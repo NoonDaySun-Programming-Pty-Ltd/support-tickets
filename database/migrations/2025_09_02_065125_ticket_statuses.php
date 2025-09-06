@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
@@ -10,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $sql = <<<SQL
+        $sql = <<<'SQL'
         INSERT INTO ticket_statuses (name, description, created_at, updated_at) VALUES
             ('Open', 'The ticket is open and awaiting action.', NOW(), NOW()),
             ('Assigned', 'Ticket has been assigned for work.', NOW(), NOW()),
