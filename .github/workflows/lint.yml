@@ -25,7 +25,7 @@ jobs:
         run: composer install -o
 
       - name: Run Pint
-        run: pint --parallel
+        run: ./vendor/bin/pint --parallel
 
       - name: Commit linted files
         uses: stefanzweifel/git-auto-commit-action@v5
