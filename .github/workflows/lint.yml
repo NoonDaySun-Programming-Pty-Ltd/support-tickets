@@ -21,8 +21,11 @@ jobs:
           extensions: json, dom, curl, libxml, mbstring
           coverage: none
 
-      - name: Install Pint
+      - name: Install Composer Dependencies
         run: composer install -o
+
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse --fix  --memory-limit=1G
 
       - name: Run Rector
         run: ./vendor/bin/rector
