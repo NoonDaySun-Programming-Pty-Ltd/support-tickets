@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Actions\Support;
 
-use App\Domain\Support\Services\TicketCreator;
+use App\Domain\Support\Services\TicketService;
 use App\Http\Requests\CreateTicketRequest;
 use App\Http\Responders\Support\CreateTicketResponder;
 use Illuminate\Http\RedirectResponse;
@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 final readonly class CreateTicketAction
 {
     public function __construct(
-        private TicketCreator $ticketCreator,
+        private TicketService $ticketService,
         private CreateTicketResponder $responder,
     ) {}
 
@@ -20,7 +20,7 @@ final readonly class CreateTicketAction
     {
         $data = $request->validated();
 
-        $ticketId = $this->ticketCreator->create(
+        $ticketId = $this->ticketService->create(
             title: $data['title'],
             description: $data['description'],
             priority: $data['priority'],

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Actions\Support;
 
-use App\Domain\Support\Services\TicketUpdator;
+use App\Domain\Support\Services\TicketService;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Http\Responders\Support\UpdateTicketResponder;
 use Illuminate\Http\RedirectResponse;
@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 final readonly class UpdateTicketAction
 {
     public function __construct(
-        private TicketUpdator $ticketUpdator,
+        private TicketService $ticketService,
         private UpdateTicketResponder $responder,
     ) {}
 
@@ -20,7 +20,7 @@ final readonly class UpdateTicketAction
     {
         $data = $request->validated();
 
-        $this->ticketUpdator->update(
+        $this->ticketService->update(
             ticketId: $data['ticket_id'],
             title: $data['title'],
             description: $data['description'],

@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace App\Domain\Support\Repositories;
 
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\TicketStatus;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface TicketStatusRepositoryInterface
 {
-    public function getAll(): Collection;
+    public function get(int $ticketStatusId): TicketStatus;
+
+    public function list(Request $request): LengthAwarePaginator;
 
     public function remove(int $ticketStatusId): void;
 

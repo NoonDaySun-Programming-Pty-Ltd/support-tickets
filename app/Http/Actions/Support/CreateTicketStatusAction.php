@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Actions\Support;
 
-use App\Domain\Support\Services\TicketStatusCreator;
+use App\Domain\Support\Services\TicketStatusService;
 use App\Http\Requests\CreateTicketRequest;
 use App\Http\Responders\Support\CreateTicketStatusResponder;
 use Illuminate\Http\RedirectResponse;
@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 final readonly class CreateTicketStatusAction
 {
     public function __construct(
-        private TicketStatusCreator $ticketStatusCreator,
+        private TicketStatusService $ticketStatusCreator,
         private CreateTicketStatusResponder $responder,
     ) {}
 

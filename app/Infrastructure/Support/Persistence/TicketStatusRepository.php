@@ -6,13 +6,25 @@ namespace App\Infrastructure\Support\Persistence;
 
 use App\Domain\Support\Repositories\TicketStatusRepositoryInterface;
 use App\Models\TicketStatus;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 final class TicketStatusRepository implements TicketStatusRepositoryInterface
 {
-    public function getAll(): Collection
+    public function get(int $ticketStatusId): TicketStatus
     {
-        return TicketStatus::all();
+        return TicketStatus::query()->findOrFail($ticketStatusId);
+    }
+
+    public function list(Request $request): LengthAwarePaginator
+    {
+        $query = TicketStatus::query();
+
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%'.$request->input('name').'%');
+        }
+
+        return $query->paginate(config(key: 'app.pagination_size', default: 15));
     }
 
     public function remove(int $ticketStatusId): void

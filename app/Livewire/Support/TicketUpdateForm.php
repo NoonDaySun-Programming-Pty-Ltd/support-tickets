@@ -11,8 +11,10 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class TicketCreateForm extends Component
+class TicketUpdateForm extends Component
 {
+    public int $ticketId = 0;
+
     public string $title = '';
 
     public string $description = '';
@@ -37,11 +39,12 @@ class TicketCreateForm extends Component
         ];
     }
 
-    public function submit(TicketService $creator): void
+    public function submit(TicketService $updator): void
     {
         $this->validate();
 
-        $id = $creator->create(
+        $id = $updator->update(
+            $this->ticketId,
             $this->title,
             $this->description,
             $this->priority,
@@ -54,6 +57,6 @@ class TicketCreateForm extends Component
 
     public function render(): Factory|View
     {
-        return view(view: 'livewire.support.ticket-create-form');
+        return view(view: 'livewire.support.ticket-update-form');
     }
 }

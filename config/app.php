@@ -30,6 +30,8 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'pagination_size' => (int) env(key: 'PAGINATION_SIZE', default: 15),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
