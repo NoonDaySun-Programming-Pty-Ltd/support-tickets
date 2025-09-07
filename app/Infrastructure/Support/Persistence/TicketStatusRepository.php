@@ -10,6 +10,16 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class TicketStatusRepository implements TicketStatusRepositoryInterface
 {
+    public function getAll(): Collection
+    {
+        return TicketStatus::all();
+    }
+
+    public function remove(int $ticketStatusId): void
+    {
+        TicketStatus::query()->where('id', $ticketStatusId)->delete();
+    }
+
     public function store(array $data): int
     {
         $loggedUnUserId = auth()->id();
@@ -21,8 +31,10 @@ final class TicketStatusRepository implements TicketStatusRepositoryInterface
         return $ticketStatus->id; // Placeholder return value
     }
 
-    public function getAll(): Collection
+    public function update(int $ticketStatusId, array $data): int
     {
-        return TicketStatus::all();
+        TicketStatus::query()->where('id', $ticketStatusId)->update($data);
+
+        return $ticketStatusId;
     }
 }

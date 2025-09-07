@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface TicketStatusRepositoryInterface
 {
+    public function getAll(): Collection;
+
+    public function remove(int $ticketStatusId): void;
+
     public function store(array $data): int;
 
-    public function getAll(): Collection;
+    public function update(int $ticketId, array $data): int;
 }
