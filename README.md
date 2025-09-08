@@ -2,6 +2,11 @@
 
 A basic support ticket system using Laravel.
 
+## Badges
+
+![linting](https://github.com/NoonDaySun-Programming-Pty-Ltd/support-tickets/actions/workflows/lint.yml/badge.svg)
+![tests](https://github.com/NoonDaySun-Programming-Pty-Ltd/support-tickets/actions/workflows/test.yml/badge.svg)
+
 ## Local Development
 
 ```shell
