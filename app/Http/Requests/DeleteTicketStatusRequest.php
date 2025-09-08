@@ -23,7 +23,7 @@ class DeleteTicketStatusRequest extends FormRequest
     public function all(mixed $keys = null): array
     {
         $data = parent::all();
-        $data['ticket_status_id'] = $this->route('ticket_status_id');
+        $data['ticket_status_id'] = $this->route('id');
 
         return $data;
     }

@@ -33,7 +33,7 @@ class UpdateTicketRequest extends FormRequest
     public function all(mixed $keys = null): array
     {
         $data = parent::all();
-        $data['ticket_id'] = $this->route('ticket_id');
+        $data['ticket_id'] = $this->route('id');
 
         return $data;
     }
