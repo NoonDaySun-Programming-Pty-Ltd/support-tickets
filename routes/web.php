@@ -8,6 +8,10 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    if (! auth()->user()) {
+        return redirect()->route('login');
+    }
+
     return view('welcome');
 })->name('home');
 

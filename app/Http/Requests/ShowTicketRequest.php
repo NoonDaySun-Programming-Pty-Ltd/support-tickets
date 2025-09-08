@@ -23,7 +23,7 @@ class ShowTicketRequest extends FormRequest
     public function all(mixed $keys = null): array
     {
         $data = parent::all();
-        $data['ticket_id'] = $this->route('id');
+        $data['ticket_id'] = (int) $this->route('id');
 
         return $data;
     }

@@ -25,7 +25,7 @@ class UpdateTicketStatusRequest extends FormRequest
     public function all(mixed $keys = null): array
     {
         $data = parent::all();
-        $data['ticket_status_id'] = $this->route('id');
+        $data['ticket_status_id'] = (int) $this->route('id');
 
         return $data;
     }

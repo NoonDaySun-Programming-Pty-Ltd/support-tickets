@@ -21,11 +21,11 @@ final readonly class UpdateTicketStatusAction
         $data = $request->validated();
 
         $this->ticketStatusService->update(
-            ticketId: $data['ticket_id'],
+            ticketStatusId: $data['ticket_status_id'],
             title: $data['title'],
             description: $data['description'],
         );
 
-        return $this->responder->respond($data['ticket_status_id']);
+        return $this->responder->respond();
     }
 }

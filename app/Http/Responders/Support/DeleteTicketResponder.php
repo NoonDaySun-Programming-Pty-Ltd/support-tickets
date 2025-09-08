@@ -11,7 +11,7 @@ final class DeleteTicketResponder
     public function respond(): RedirectResponse
     {
         return redirect()
-            ->route('tickets.list')
+            ->route('ticket-status.list')
             ->with('status', 'Ticket deleted successfully.');
     }
 }

@@ -36,6 +36,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $TicketStatuses->links()  }}
         </div>
     </div>
 </x-layouts.app>

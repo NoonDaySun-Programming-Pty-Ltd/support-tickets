@@ -19,11 +19,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('tickets', CreateTicketAction::class)->name('tickets.create');
     Route::delete('tickets/{id}', DeleteTicketAction::class)->name('tickets.delete');
     Route::get('tickets/{id}', ShowTicketAction::class)->name('tickets.show');
-    Route::put('tickets/{id}', UpdateTicketAction::class)->name('tickets.update');
+    Route::post('tickets/{id}', UpdateTicketAction::class)->name('tickets.update');
 
     Route::get('ticket-statuses', ListTicketStatusAction::class)->name('ticket-status.list');
-    Route::get('ticket-statuses/{id}', ShowTicketStatusAction::class)->name('ticket-status.list');
+    Route::get('ticket-statuses/{id}', ShowTicketStatusAction::class)->name('ticket-status.show');
     Route::post('ticket-statuses', CreateTicketStatusAction::class)->name('ticket-status.create');
     Route::delete('ticket-statuses/{id}', DeleteTicketStatusAction::class)->name('ticket-status.delete');
-    Route::put('ticket-statuses/{id}', UpdateTicketStatusAction::class)->name('ticket-status.update');
+    Route::post('ticket-statuses/{id}', UpdateTicketStatusAction::class)->name('ticket-status.update');
 });

@@ -6,6 +6,7 @@ namespace App\Http\Actions\Support;
 
 use App\Domain\Support\Services\TicketStatusService;
 use App\Http\Requests\ShowTicketStatusRequest;
+use App\Http\Responders\Support\ShowTicketStatusResponder;
 use Illuminate\Contracts\View\View;
 
 final readonly class ShowTicketStatusAction

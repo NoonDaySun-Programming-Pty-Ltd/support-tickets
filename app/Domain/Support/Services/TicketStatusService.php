@@ -22,7 +22,7 @@ final class TicketStatusService
         $loggedInUser = auth()->id();
 
         return $this->ticketStatusRepository->store([
-            'title' => $title,
+            'name' => $title,
             'description' => $description,
             'created_by' => $loggedInUser,
             'updated_by' => $loggedInUser,
@@ -45,14 +45,14 @@ final class TicketStatusService
     }
 
     public function update(
-        int $ticketId,
+        int $ticketStatusId,
         string $title,
         string $description,
     ): int {
         $loggedInUser = auth()->id();
 
-        return $this->ticketStatusRepository->update(ticketId: $ticketId, data: [
-            'title' => $title,
+        return $this->ticketStatusRepository->update(ticketStatusId: $ticketStatusId, data: [
+            'name' => $title,
             'description' => $description,
             'updated_by' => $loggedInUser,
         ]);

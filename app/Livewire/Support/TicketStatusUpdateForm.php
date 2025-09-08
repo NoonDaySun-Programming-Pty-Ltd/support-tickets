@@ -40,6 +40,6 @@ class TicketStatusUpdateForm extends Component
 
     public function render(): Factory|View
     {
-        return view(view: 'livewire.support.ticket-update-form');
+        return view(view: 'livewire.ticket-statuses.update');
     }
 }

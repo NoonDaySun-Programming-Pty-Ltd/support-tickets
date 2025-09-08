@@ -18,5 +18,5 @@ interface TicketStatusRepositoryInterface
 
     public function store(array $data): int;
 
-    public function update(int $ticketId, array $data): int;
+    public function update(int $ticketStatusId, array $data): int;
 }

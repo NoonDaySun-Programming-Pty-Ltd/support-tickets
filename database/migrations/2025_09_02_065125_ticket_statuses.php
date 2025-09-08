@@ -17,6 +17,7 @@ return new class extends Migration
             ('Open', 'The ticket is open and awaiting action.', NOW(), NOW()),
             ('Assigned', 'Ticket has been assigned for work.', NOW(), NOW()),
             ('In Progress', 'Work on the ticket is currently underway.', NOW(), NOW()),
+            ('In Testing', 'QA confirming fix', NOW(), NOW()),
             ('Resolved', 'The issue has been resolved but not yet verified by the reporter.', NOW(), NOW()),
             ('Closed', 'The ticket has been closed after verification.', NOW(), NOW()),
             ('Reopened', 'The ticket has been reopened after being closed.', NOW(), NOW()),

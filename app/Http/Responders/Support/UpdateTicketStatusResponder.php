@@ -11,7 +11,7 @@ final class UpdateTicketStatusResponder
     public function respond(): RedirectResponse
     {
         return redirect()
-            ->route('ticket-statuses.list')
+            ->route('ticket-status.list')
             ->with('status', 'Ticket Status updated successfully.');
     }
 }

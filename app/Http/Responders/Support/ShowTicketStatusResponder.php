@@ -11,6 +11,6 @@ final class ShowTicketStatusResponder
 {
     public function respond(TicketStatus $ticketStatus): View
     {
-        return view(view: 'livewire.ticket-statuses.update', data: ['ticket' => $ticketStatus]);
+        return view(view: 'livewire.ticket-statuses.update', data: ['status' => $ticketStatus]);
     }
 }
