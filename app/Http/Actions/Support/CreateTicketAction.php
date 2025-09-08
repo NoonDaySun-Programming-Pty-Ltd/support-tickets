@@ -23,9 +23,9 @@ final readonly class CreateTicketAction
         $ticketId = $this->ticketService->create(
             title: $data['title'],
             description: $data['description'],
-            priority: $data['priority'],
-            statusId: $data['status_id'],
-            assigneeId: $data['assignee_id'] ?? null,
+            priority: (int) $data['priority'],
+            statusId: (int) $data['status_id'],
+            assigneeId: (int) $data['assignee_id'],
         );
 
         return $this->responder->respond($ticketId);

@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Livewire\Support;
 
+use App\Domain\Support\Repositories\TicketStatusRepositoryInterface;
+use App\Domain\Support\Repositories\UserRepositoryInterface;
 use App\Domain\Support\Services\TicketService;
 use App\Enums\Priorities;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -52,8 +55,19 @@ class TicketCreateForm extends Component
         $this->redirectRoute('tickets.show', $id);
     }
 
-    public function render(): Factory|View
+    public function render(Request $request): Factory|View
     {
-        return view(view: 'livewire.support.ticket-create-form');
+        $returned = [];
+        $priorities = Priorities::cases();
+
+        foreach ($priorities as $priority) {
+            $returned[$priority->value] = $priority->name;
+        }
+
+        return view(view: 'livewire.tickets.create', data: [
+            'priorities' => $returned,
+            'statuses' => app(TicketStatusRepositoryInterface::class)->list($request),
+            'users' => app(UserRepositoryInterface::class)->all(),
+        ]);
     }
 }

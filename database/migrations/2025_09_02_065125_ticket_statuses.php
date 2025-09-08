@@ -12,19 +12,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        $now = now();
         $sql = <<<'SQL'
         INSERT INTO ticket_statuses (name, description, created_at, updated_at) VALUES
-            ('Open', 'The ticket is open and awaiting action.', NOW(), NOW()),
-            ('Assigned', 'Ticket has been assigned for work.', NOW(), NOW()),
-            ('In Progress', 'Work on the ticket is currently underway.', NOW(), NOW()),
-            ('In Testing', 'QA confirming fix', NOW(), NOW()),
-            ('Resolved', 'The issue has been resolved but not yet verified by the reporter.', NOW(), NOW()),
-            ('Closed', 'The ticket has been closed after verification.', NOW(), NOW()),
-            ('Reopened', 'The ticket has been reopened after being closed.', NOW(), NOW()),
-            ('On Hold', 'The ticket is on hold pending further information or action.', NOW(), NOW());
+            ('Open', 'The ticket is open and awaiting action.', ?, ?),
+            ('Assigned', 'Ticket has been assigned for work.', ?, ?),
+            ('In Progress', 'Work on the ticket is currently underway.', ?, ?),
+            ('In Testing', 'QA confirming fix', ?, ?),
+            ('Resolved', 'The issue has been resolved but not yet verified by the reporter.', ?, ?),
+            ('Closed', 'The ticket has been closed after verification.', ?, ?),
+            ('Reopened', 'The ticket has been reopened after being closed.', ?, ?),
+            ('On Hold', 'The ticket is on hold pending further information or action.', ?, ?);
         SQL;
 
-        DB::statement(query: $sql);
+        DB::insert(query: $sql, bindings: array_fill(start_index: 0, count: 16, value: $now));
     }
 
     /**

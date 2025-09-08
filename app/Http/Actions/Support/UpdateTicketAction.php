@@ -21,12 +21,12 @@ final readonly class UpdateTicketAction
         $data = $request->validated();
 
         $this->ticketService->update(
-            ticketId: $data['ticket_id'],
+            ticketId: (int) $data['ticket_id'],
             title: $data['title'],
             description: $data['description'],
-            priority: $data['priority'],
-            statusId: $data['status_id'],
-            assigneeId: $data['assignee_id'] ?? null,
+            priority: (int) $data['priority'],
+            statusId: (int) $data['status_id'],
+            assigneeId: (int) $data['assignee_id'],
         );
 
         return $this->responder->respond($data['ticket_id']);

@@ -49,22 +49,27 @@ class Ticket extends Model
         'priority',
     ];
 
-    protected function assignee(): BelongsTo
+    protected $with = [
+        'status',
+        'assignee',
+    ];
+
+    public function assignee(): BelongsTo
     {
         return $this->belongsTo(User::class, 'assignee_id');
     }
 
-    protected function createdBy(): BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    protected function status(): BelongsTo
+    public function status(): BelongsTo
     {
         return $this->belongsTo(TicketStatus::class, 'status_id');
     }
 
-    protected function updatedBy(): BelongsTo
+    public function updatedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
     }

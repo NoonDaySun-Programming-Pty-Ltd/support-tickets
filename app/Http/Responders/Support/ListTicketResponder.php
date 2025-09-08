@@ -11,6 +11,6 @@ final class ListTicketResponder
 {
     public function respond(LengthAwarePaginator $paginatedData): View
     {
-        return view(view: 'tickets.list', data: ['tickets' => $paginatedData]);
+        return view(view: 'dashboard', data: ['tickets' => $paginatedData]);
     }
 }

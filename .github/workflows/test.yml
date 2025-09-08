@@ -3,7 +3,7 @@ name: Fix Code Style
 on: [push]
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -19,19 +19,10 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: json, dom, curl, libxml, mbstring
-          coverage: none
+          coverage: pcov
 
       - name: Install Composer Dependencies
         run: composer install -o
 
-      - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse  --memory-limit=1G
-
-      - name: Run Rector
-        run: ./vendor/bin/rector
-
-      - name: Run Pint
-        run: ./vendor/bin/pint --parallel
-
-      - name: Commit linted files
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Run Pest
+        run: ./vendor/bin/pest --coverage --colors=always

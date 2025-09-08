@@ -20,6 +20,6 @@ final readonly class ShowTicketAction
     {
         $data = $request->validated();
 
-        return $this->responder->respond($this->ticketService->get(ticketId: $data['ticket_id']));
+        return $this->responder->respond($this->ticketService->get(ticketId: $data['ticket_id']), $request);
     }
 }
