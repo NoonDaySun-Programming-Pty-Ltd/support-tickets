@@ -4,10 +4,19 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Domain\Support\Repositories\TicketRepositoryInterface;
+use App\Domain\Support\Repositories\TicketStatusRepositoryInterface;
+use App\Infrastructure\Support\Persistence\TicketRepository;
+use App\Infrastructure\Support\Persistence\TicketStatusRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public $bindings = [
+        TicketStatusRepositoryInterface::class => TicketStatusRepository::class,
+        TicketRepositoryInterface::class => TicketRepository::class,
+    ];
+
     /**
      * Register any application services.
      */

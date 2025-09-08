@@ -8,10 +8,10 @@ use Illuminate\Http\RedirectResponse;
 
 final class UpdateTicketStatusResponder
 {
-    public function respond(int $ticketId): RedirectResponse
+    public function respond(): RedirectResponse
     {
         return redirect()
-            ->route('tickets.show', ['ticket' => $ticketId])
-            ->with('status', 'Ticket updated successfully.');
+            ->route('ticket-statuses.list')
+            ->with('status', 'Ticket Status updated successfully.');
     }
 }

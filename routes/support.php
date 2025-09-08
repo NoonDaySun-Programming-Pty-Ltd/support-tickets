@@ -3,10 +3,15 @@
 declare(strict_types=1);
 
 use App\Http\Actions\Support\CreateTicketAction;
+use App\Http\Actions\Support\CreateTicketStatusAction;
 use App\Http\Actions\Support\DeleteTicketAction;
+use App\Http\Actions\Support\DeleteTicketStatusAction;
 use App\Http\Actions\Support\ListTicketAction;
+use App\Http\Actions\Support\ListTicketStatusAction;
 use App\Http\Actions\Support\ShowTicketAction;
+use App\Http\Actions\Support\ShowTicketStatusAction;
 use App\Http\Actions\Support\UpdateTicketAction;
+use App\Http\Actions\Support\UpdateTicketStatusAction;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
@@ -16,8 +21,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tickets/{ticket-id}', ShowTicketAction::class)->name('tickets.show');
     Route::put('tickets/{ticket-id}', UpdateTicketAction::class)->name('tickets.update');
 
-    Route::get('ticket-statuses', ListTicketAction::class)->name('ticket-status.list');
-    Route::post('ticket-statuses', CreateTicketAction::class)->name('ticket-status.create');
-    Route::delete('ticket-statuses/{ticket-id}', DeleteTicketAction::class)->name('ticket-status.delete');
-    Route::put('ticket-statuses/{ticket-id}', UpdateTicketAction::class)->name('ticket-status.update');
+    Route::get('ticket-statuses', ListTicketStatusAction::class)->name('ticket-status.list');
+    Route::get('ticket-statuses/{ticket-status-id}', ShowTicketStatusAction::class)->name('ticket-status.list');
+    Route::post('ticket-statuses', CreateTicketStatusAction::class)->name('ticket-status.create');
+    Route::delete('ticket-statuses/{ticket-status-id}', DeleteTicketStatusAction::class)->name('ticket-status.delete');
+    Route::put('ticket-statuses/{ticket-status-id}', UpdateTicketStatusAction::class)->name('ticket-status.update');
 });

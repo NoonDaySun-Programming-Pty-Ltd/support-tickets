@@ -6,6 +6,7 @@ namespace App\Http\Actions\Support;
 
 use App\Domain\Support\Services\TicketStatusService;
 use App\Http\Responders\Support\ListTicketStatusResponder;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 final readonly class ListTicketStatusAction
@@ -15,7 +16,7 @@ final readonly class ListTicketStatusAction
         private ListTicketStatusResponder $responder,
     ) {}
 
-    public function __invoke(Request $request): \Illuminate\Contracts\View\View
+    public function __invoke(Request $request): View
     {
         return $this->responder->respond($this->ticketStatusService->list($request));
     }

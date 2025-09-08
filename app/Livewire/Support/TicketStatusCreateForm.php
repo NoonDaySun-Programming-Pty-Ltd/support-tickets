@@ -37,6 +37,6 @@ class TicketStatusCreateForm extends Component
 
     public function render(): Factory|View
     {
-        return view(view: 'livewire.support.ticket-status-create-form');
+        return view(view: 'livewire.ticket-statuses.create');
     }
 }

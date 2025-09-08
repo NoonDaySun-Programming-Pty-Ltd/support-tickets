@@ -20,6 +20,8 @@ class Password extends Component
 
     /**
      * Update the password for the currently authenticated user.
+     *
+     * @throws ValidationException
      */
     public function updatePassword(): void
     {

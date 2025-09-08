@@ -11,6 +11,6 @@ final class ListTicketStatusResponder
 {
     public function respond(LengthAwarePaginator $paginatedData): View
     {
-        return view(view: 'ticket-statuses.list', data: ['ticket-status' => $paginatedData]);
+        return view(view: 'livewire.ticket-statuses.list', data: ['TicketStatuses' => $paginatedData]);
     }
 }
