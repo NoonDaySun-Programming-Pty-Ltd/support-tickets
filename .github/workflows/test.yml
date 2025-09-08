@@ -25,4 +25,7 @@ jobs:
         run: composer install -o
 
       - name: Run Pest
-        run: php artisan key:generate; ./vendor/bin/pest --coverage --colors=always
+        run: |
+          cp .env.example .env; \
+          php artisan key:generate; \
+          ./vendor/bin/pest --coverage --colors=always
