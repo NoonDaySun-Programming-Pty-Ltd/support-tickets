@@ -11,7 +11,14 @@ test(description: 'we can view the ticket page', closure: function (): void {
 
     $this->get(uri: route(name: 'dashboard'))
         ->assertOk()
-        ->assertSee(value: 'Tickets');
+        ->assertSee(value: 'Create New Support Ticket')
+        ->assertSee(value: 'ID')
+        ->assertSee(value: 'Title')
+        ->assertSee(value: 'User')
+        ->assertSee(value: 'Status')
+        ->assertSee(value: 'Created At')
+        ->assertSee(value: 'Actions')
+        ->assertSee(value: 'Support Ticket List');
 });
 
 test(description: 'we can view a ticket page', closure: function (): void {
