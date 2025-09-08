@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 /*
@@ -46,7 +48,9 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function loginUser()
 {
-    // ..
+    $user = User::factory(1)->create()->first();
+
+    Auth::login($user);
 }
